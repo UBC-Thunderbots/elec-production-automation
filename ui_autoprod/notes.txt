@@ -1,6 +1,0 @@
-testing mosfets for ui autoprod:
-
-also for 'buffers' make it so that it sends a sequential signal through all the buffers and then reports it (use ADC?)
-
-there needs to be a test point at PB_BOOT/RESET pin .. use ESP32 ADC
-- send a signal through SRC Boot/RESET to turn on the mosfet, and hence drive the optocoupler and check to see if it's all good
