@@ -1,0 +1,9 @@
+finished (technically) all the production tests for the UI board (as per kenny's request)
+
+ui autoprod:
+[*] can the mosfets drive the optocouplers? (in theory yes)
+[*] testing buffers, feeding a signal and seeing if it comes out the same
+
+power autoprod:
+[ ] will finish this up eventually (UI done so i can do this now)
+[ ] check out the stuff tara sent
