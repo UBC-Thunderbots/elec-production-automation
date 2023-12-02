@@ -51,7 +51,7 @@ Last updated by: Ryan Nguyen
 
 [7] To start flashing, assuming you have a sketch ready that compiles, make sure that the port in ```tools``` is the same port as the one connected to your ESP32. You can verify by going to the ```device manager``` on your windows machine and looking for a UART BRIDGE device in the PORTS (COM & LPT) drop-down:<br>
 <br>
-![7](https://github.com/UBC-Thunderbots/elec-production-automation/assets/97413336/9f14a0d3-debe-4046-a4f1-3a31d2ab5b8e) <br>
+![Screenshot 2023-12-02 131117](https://github.com/UBC-Thunderbots/elec-production-automation/assets/97413336/6305aa45-c928-46c6-ac35-30e50d6e8c2a)
 
 [8] Once that is all done, you can hit the sketch upload button within Arduino IDE. Monitor the terminal, and once you see the ```connecting.......``` message hit the ```BOOT``` button on the ESP32. Another option is holding down the button and releasing it once the connecting message is seen.<br>
 <br>
