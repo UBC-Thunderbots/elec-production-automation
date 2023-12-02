@@ -11,7 +11,7 @@
  *  3.3V        -->     Jetson 3.3V
  *  opto1_in    <--     tp17 (boot test point)
  *  opto2_in    <--     tp18 (reset test point)
- *  control_out -->     src_boot, src_reset
+ *  control_out -->     pb_boot, pb_reset ()
  *  
  * datasheets:
  * {https://www.americanbrightled.com/pdffiles/ir-uv/ir/APC-817.pdf}
@@ -29,8 +29,8 @@
  *    - 3.3V / 3900kOhms should be a low enough current to turn on the transistor gate and not fry anything :)
  * - if all goes well, a reading of ~3.3V should be read on the output pin
  *  
- * Last updated: 07/04/2023, Ryan Nguyen
- * - started on the code today :)
+ * Last updated: 02/12/2023, Ryan Nguyen
+ * - some minor bug fixes
  *
  *                                                                   ESP32 PICO V4 pinout
  *                                                                       ___________
@@ -64,7 +64,7 @@
 #include <stdlib.h>
 #include <stdio.h>
 
-int control_out;
+int control_out = 9;      // responsible for turning on the optocoupler and pulls the reset/boot lines to ~0.3V
 int opto1_in = 35;        // reads the analog voltage on pin 35 for the optocoupler responsible for 'boot'
 int opto2_in = 34;        // reads the analog voltage on pin 34 for the optocoupler responsible for 'reset'
 char text_buf[100];
@@ -84,16 +84,22 @@ void setup()
 bool test_opto(int in)
 {
   bool test;
+  double val;
   // send a signal to turn on the optocoupler
   digitalWrite(control_out, HIGH);
-  if(analogRead(in)>4000)      // according to (1) the ADC on the ESP32 interprets 0V as ~0 and 3.3V as ~4095, a ratio of ~1241
+  delay(100);
+  val = analogRead(in);
+  //Serial.print(val);
+  if(val > 350 && val < 400)      // according to (1) the ADC on the ESP32 interprets 0V as ~0 and 3.3V as ~4095, a ratio of ~1241
   {
-    sprintf(text_buf, "voltage reading on the output pin of the 817D1: %.1fV\n", (double)analogRead(in)/1241);
+    sprintf(text_buf, "pin[%d] | voltage reading on the output pin of the 817D1: %.1fV\n", in, val/1241);
     Serial.print(text_buf);
     test = true;
   }
   else
   {
+    sprintf(text_buf, "test fail :(\n");
+    Serial.print(text_buf);
     test = false;
   }
   digitalWrite(control_out, LOW);
@@ -104,7 +110,7 @@ bool test_opto(int in)
 void loop()
 {
   test_opto(opto1_in);
-  delay(500);
+  delay(1000);
   test_opto(opto2_in);
 
   while(1);     // stop test
