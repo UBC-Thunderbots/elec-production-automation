@@ -60,25 +60,26 @@ Last updated by: Ryan Nguyen
 And just like that, we should be good to go. I'd recommend flashing this blinky code to test out the ESP32 and get comfy with the flashing process. Happy flashing!<br>
 
 ```C
-int LED_BUILTIN = 2;
+int LED_TEST = 21;
 
 
 void setup() {
 
-pinMode (LED_BUILTIN, OUTPUT);
+pinMode (LED_TEST, OUTPUT);
 
 }
 
 
 void loop() {
 
-digitalWrite(LED_BUILTIN, HIGH);
+digitalWrite(LED_TEST, HIGH);
 
 delay(1000);
 
-digitalWrite(LED_BUILTIN, LOW);
+digitalWrite(LED_TEST, LOW);
 
 delay(1000);
 
 }
 ```
+![-04a5c23a52](https://github.com/UBC-Thunderbots/elec-production-automation/assets/97413336/685dc0b8-bcf8-42d4-bf0c-c8c4e8df836b)
