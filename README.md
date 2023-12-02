@@ -53,7 +53,7 @@ Last updated by: Ryan Nguyen
 <br>
 ![Screenshot 2023-12-02 131117](https://github.com/UBC-Thunderbots/elec-production-automation/assets/97413336/6305aa45-c928-46c6-ac35-30e50d6e8c2a)
 
-[8] Once that is all done, you can hit the sketch upload button within Arduino IDE. Monitor the terminal, and once you see the ```connecting.......``` message hit the ```BOOT``` button on the ESP32. Another option is holding down the button and releasing it once the connecting message is seen.<br>
+[8] Once that is all done, you can hit the sketch upload button within Arduino IDE. Monitor the terminal, and once you see the ```connecting.......``` message hit the ```BOOT``` button on the ESP32. Another option is holding down the button and releasing it once the connecting message is seen. Sometimes the ESP32 enters boot mode automatically so you don't need to hold the button down!<br>
 <br>
 ![8](https://github.com/UBC-Thunderbots/elec-production-automation/assets/97413336/d2f9acc9-da3d-4b1d-9f1d-22dcb14aecd4) <br>
 
