@@ -20,16 +20,13 @@
  * 
  * {https://randomnerdtutorials.com/esp32-adc-analog-read-arduino-ide/} (1)
  * 
- * **The collector current on the MMSS8050 NPN transistor is rated for 1.5A max
- * **BJT looks like I can use a standard logic output to control the gate..
  * 
  * README:
  * - sets up and measures the voltage on the output pin (3) on the APC-817D1 optocoupler
- * - sends a digital HIGH on control_out to the src_boot, src_reset pins on the UI Board
- *    - 3.3V / 3900kOhms should be a low enough current to turn on the transistor gate and not fry anything :)
- * - if all goes well, a reading of ~3.3V should be read on the output pin
+ * - sends a digital signal on control_out to the src_boot, src_reset pins on the UI Board, pulls boot/reset low
+ * - if all goes well, a reading of ~0.3V should be read on the output pin
  *  
- * Last updated: 02/12/2023, Ryan Nguyen
+ * Last updated: 13/01/2024, Ryan Nguyen
  * - some minor bug fixes
  *
  *                                                                   ESP32 PICO V4 pinout
